@@ -1,0 +1,35 @@
+name = input("Enter file:")
+if len(name) < 1:
+    name = "mbox-short.txt"
+handle = open(name)
+print(name)
+
+timestamp = list()
+counts = dict()
+hours = list() 
+
+# how to find the 'From' line? 
+
+hours = re.findall('^From.+([0-9]+?:)',name)
+print(hours)
+
+
+for line in handle: 
+
+    if line.startswith('From ') :
+        words = line.split()    			
+# split each ‘From’ line into parts 
+        timestamp.append(words[5]) 		
+# assign each timestamp to a list 
+
+        for time in timestamp: 			
+# loop through each item in the timestamp list  
+            hours.append(timestamp[0:2]) 
+        
+# assign each hour from each time to a list 
+        for hour in counts: 			
+# loop through each hour in hours list, count distribution and add to counts dictionary: 
+            counts[hour] += 1
+
+for hour, count in counts: 
+    print(sorted((key,value))
